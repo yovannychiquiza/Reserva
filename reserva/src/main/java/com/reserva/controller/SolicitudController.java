@@ -71,8 +71,9 @@ public class SolicitudController {
 	
 	@RequestMapping(value="/edit/{id}", method=RequestMethod.GET)
 	public ModelAndView editSolicitudPage(@PathVariable Integer id) {
-		ModelAndView modelAndView = new ModelAndView("edit-solicitud-form");
+		ModelAndView modelAndView = new ModelAndView("solicitud/edit-solicitud-form");
 		Solicitud solicitud = solicitudService.getSolicitud(id);
+		modelAndView.addObject("listaCiudades", referenceData());
 		modelAndView.addObject("solicitud",solicitud);
 		return modelAndView;
 	}

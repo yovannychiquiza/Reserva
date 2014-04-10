@@ -25,8 +25,9 @@ public class SolicitudDAOImpl implements SolicitudDAO {
 
 	public void updateSolicitud(Solicitud solicitud) {
 		Solicitud solicitudToUpdate = getSolicitud(solicitud.getId());
-		solicitudToUpdate.setCiudadDestino_Id(solicitud.getCiudadDestino_Id());
-		solicitudToUpdate.setCiudadOrigen_Id(solicitud.getCiudadOrigen_Id());
+		//solicitudToUpdate.setCiudadDestino_Id(solicitud.getCiudadDestino_Id());
+		//solicitudToUpdate.setCiudadOrigen_Id(solicitud.getCiudadOrigen_Id());
+		solicitudToUpdate.setEstadoSolicitud_Id(solicitud.getEstadoSolicitud_Id());		
 		getCurrentSession().update(solicitudToUpdate);
 		
 	}

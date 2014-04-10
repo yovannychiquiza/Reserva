@@ -13,8 +13,8 @@
 </head>
 <body>
 <h1>Validacion solicitud</h1>
-<p>Aqui puede Agregar Validar una solicitud.</p>
-<form:form method="POST" commandName="solicitud" action="${pageContext.request.contextPath}/solicitud/edit.html">
+<p>Aqui puede Validar una solicitud.</p>
+<form:form method="POST" commandName="solicitud" action="${pageContext.request.contextPath}/solicitud/edit/${solicitud.id}.html">
 <table>
 <tbody>
 	<tr>
@@ -27,17 +27,17 @@
 	</tr>
 	<tr>
 		<td>Fecha Salida:</td>
-		<td><form:input path="fechaSalida" /></td>
+		<td>${solicitud.fechaSalida}</td>
 	</tr>
 	
 
 	<tr>
 		<td>Fecha Regreso:</td>
-		<td><form:input path="fechaRegreso" /></td>
+		<td>${solicitud.fechaRegreso}</td>
 	</tr>
 	
 	<tr>
-		<td><input type="submit" value="Add" /></td>
+		<td><input type="submit" value="Edit" /></td>
 		<td></td>
 	</tr>
 </tbody>

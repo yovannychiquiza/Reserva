@@ -38,6 +38,9 @@ public class SolicitudServiceImpl implements SolicitudService {
 	public void updateSolicitud(Solicitud solicitud) {
 		Calendar cal = Calendar.getInstance();
 		solicitud.setFechaModificacion(cal.getTime());
+		EstadoSolicitud estadoSolicitud = new EstadoSolicitud();
+		estadoSolicitud.setId(EnumEstadoSolictud.Autorizacion_Jefe.getValor());
+		solicitud.setEstadoSolicitud_Id(estadoSolicitud);
 		solicitudDAO.updateSolicitud(solicitud);
 	}
 
