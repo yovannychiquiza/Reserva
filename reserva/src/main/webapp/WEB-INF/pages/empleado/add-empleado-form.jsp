@@ -12,6 +12,8 @@
 <title>Agregar empleado</title>
 </head>
 <body>
+<jsp:include page="../menu.jsp"/>	
+
 <h1>Agregar empleado</h1>
 <p>Aqui puede Agregar un nuevo empleado.</p>
 <form:form method="POST" commandName="empleado" action="${pageContext.request.contextPath}/empleado/add.html">
@@ -30,7 +32,7 @@
 		<td><form:input path="apellido" /></td>
 	</tr>
 	<tr>
-		<td><input type="submit" value="Add" /></td>
+		<td><input type="submit" value="Guardar" /></td>
 		<td></td>
 	</tr>
 </tbody>

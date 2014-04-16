@@ -11,11 +11,12 @@
 <title>Lista de solicitudes</title>
 </head>
 <body>
+<jsp:include page="../menu.jsp"/>	
+
 	<h1>Lista de solicitudes</h1>
 	<p>Aqui puede ver la lista de empleados, editarlos, eliminarlos o
 		actualizarlos.</p>
 
-	<a href="${pageContext.request.contextPath}/solicitud/add.html">Agregar</a>
 	<br />
 
 	<table border="1px" cellpadding="0" cellspacing="0">
@@ -39,19 +40,15 @@
 					<td>${solicitud.fechaSalida}</td>
 					<td>${solicitud.fechaRegreso}</td>
 					<td>${solicitud.estadoSolicitud_Id.nombre}</td>
-					<td><a
-						href="${pageContext.request.contextPath}/solicitud/edit/${solicitud.id}.html">Editar</a><br />
-						<a
-						href="${pageContext.request.contextPath}/solicitud/delete/${solicitud.id}.html">borrar</a><br />
+					<td><a href="${pageContext.request.contextPath}/solicitud/edit/${solicitud.id}.html">Autorizar Jefe</a><br />
+						<a href="${pageContext.request.contextPath}/solicitud/delete/${solicitud.id}.html">Autorizar Gerencia</a><br />
+						
 					</td>
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
 
-	<p>
-		<a href="${pageContext.request.contextPath}/">Regresar</a>
-	</p>
 
 </body>
 </html>

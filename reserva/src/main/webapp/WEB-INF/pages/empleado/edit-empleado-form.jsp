@@ -12,6 +12,8 @@
 <title>Editar empleado</title>
 </head>
 <body>
+<jsp:include page="../menu.jsp"/>	
+
 <h1>Editar empleado</h1>
 <p>Aqui puede editar un empleado existente.</p>
 <p>${message}</p>
@@ -31,7 +33,7 @@
 		<td><form:input path="apellido" /></td>
 	</tr>
 	<tr>
-		<td><input type="submit" value="Edit" /></td>
+		<td><input type="submit" value="Guardar" /></td>
 		<td></td>
 	</tr>
 </tbody>

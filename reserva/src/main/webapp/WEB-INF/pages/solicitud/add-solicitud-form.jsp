@@ -12,6 +12,13 @@
 <title>Agregar solicitud</title>
 </head>
 <body>
+<jsp:include page="../menu.jsp"/>	
+
+<script>
+  $(function() {
+    $( ".datepicker" ).datepicker();
+  });
+  </script>
 <h1>Agregar solicitud</h1>
 <p>Aqui puede Agregar un nuevo solicitud.</p>
 <form:form method="POST" commandName="solicitud" action="${pageContext.request.contextPath}/solicitud/add.html">
@@ -27,17 +34,17 @@
 	</tr>
 	<tr>
 		<td>Fecha Salida:</td>
-		<td><form:input path="fechaSalida" /></td>
+		<td><form:input path="fechaSalida" class="datepicker"/></td>
 	</tr>
 	
 
 	<tr>
 		<td>Fecha Regreso:</td>
-		<td><form:input path="fechaRegreso" /></td>
+		<td><form:input path="fechaRegreso" class="datepicker"/></td>
 	</tr>
 	
 	<tr>
-		<td><input type="submit" value="Add" /></td>
+		<td><input type="submit" value="Guardar" /></td>
 		<td></td>
 	</tr>
 </tbody>

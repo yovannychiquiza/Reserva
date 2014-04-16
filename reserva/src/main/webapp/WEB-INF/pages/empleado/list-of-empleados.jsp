@@ -11,10 +11,11 @@
 <title>Lista de empleados</title>
 </head>
 <body>
+<jsp:include page="../menu.jsp"/>	
+
 <h1>Lista de empleados</h1>
 <p>Aqui puede ver la lista de empleados, editarlos, eliminarlos o actualizarlos.</p>
 
-<a href="${pageContext.request.contextPath}/empleado/add.html">Agregar</a><br/>
 
 <table border="1px" cellpadding="0" cellspacing="0" >
 <thead>
@@ -42,7 +43,6 @@
 </tbody>
 </table>
 
-<p><a href="${pageContext.request.contextPath}/">Regresar</a></p>
 
 </body>
 </html>

@@ -12,6 +12,8 @@
 <title>Validacion solicitud</title>
 </head>
 <body>
+<jsp:include page="../menu.jsp"/>	
+
 <h1>Validacion solicitud</h1>
 <p>Aqui puede Validar una solicitud.</p>
 <form:form method="POST" commandName="solicitud" action="${pageContext.request.contextPath}/solicitud/edit/${solicitud.id}.html">
@@ -37,7 +39,7 @@
 	</tr>
 	
 	<tr>
-		<td><input type="submit" value="Edit" /></td>
+		<td><input type="submit" value="Guardar" /></td>
 		<td></td>
 	</tr>
 </tbody>

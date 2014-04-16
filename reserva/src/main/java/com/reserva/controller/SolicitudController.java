@@ -47,6 +47,8 @@ public class SolicitudController {
 			return country;
 		}
 		
+		
+		
 	@RequestMapping(value="/add", method=RequestMethod.POST)
 	public ModelAndView addingSolicitud(@ModelAttribute Solicitud solicitud) {
 		
