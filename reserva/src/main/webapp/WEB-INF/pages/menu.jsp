@@ -17,6 +17,7 @@
   <script src="<c:url value="/resources/script/jquery.ui.menu.js" />"></script>  
   <script src="<c:url value="/resources/script/jMenu.jquery.js" />"></script>  
   <link href="<c:url value='/resources/style/demos.css' />" rel="stylesheet">
+  <link href="<c:url value='/resources/style/reserva_style.css' />" rel="stylesheet">
 	
   <script src="<c:url value="/resources/script/jquery.ui.datepicker.js" />"></script>    
   
