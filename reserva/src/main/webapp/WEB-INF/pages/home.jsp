@@ -11,6 +11,8 @@
 </head>
 <body>
 	<br />
-	<jsp:include page="menu.jsp" />
+	<div class="container">
+		<jsp:include page="menu.jsp" />
+	</div>
 </body>
 </html>

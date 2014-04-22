@@ -26,12 +26,7 @@
 			action="${pageContext.request.contextPath}/solicitud/add.html">
 
 
-			<div class="det-cuadro-gris-a">
-				Agregar solicitud
-				<div id="errorMessage" class="error"
-					style="float: right; display: none;">*Los campos marcados con
-					rojo son obligatorios. Debe diligenciarlos para poder continuar.</div>
-			</div>
+			<div class="det-cuadro-gris-a">Agregar solicitud</div>
 
 			<div id="dis-contenido" style="width: 100%">
 				<div class="det-contenido-1a">

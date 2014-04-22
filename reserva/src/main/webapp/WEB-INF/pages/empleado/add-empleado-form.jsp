@@ -1,10 +1,10 @@
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-    
+	pageEncoding="ISO-8859-1"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -12,33 +12,43 @@
 <title>Agregar empleado</title>
 </head>
 <body>
-<jsp:include page="../menu.jsp"/>	
+	<div class="container">
 
-<h1>Agregar empleado</h1>
-<p>Aqui puede Agregar un nuevo empleado.</p>
-<form:form method="POST" commandName="empleado" action="${pageContext.request.contextPath}/empleado/add.html">
-<table>
-<tbody>
-	<tr>
-		<td>Identificacion:</td>
-		<td><form:input path="identificacion" /></td>
-	</tr>
-	<tr>
-		<td>Nombre:</td>
-		<td><form:input path="nombre" /></td>
-	</tr>
-	<tr>
-		<td>Apellido:</td>
-		<td><form:input path="apellido" /></td>
-	</tr>
-	<tr>
-		<td><input type="submit" value="Guardar" /></td>
-		<td></td>
-	</tr>
-</tbody>
-</table>
-</form:form>
+		<jsp:include page="../menu.jsp" />
 
-<p><a href="${pageContext.request.contextPath}/empleado/list.html">Empleados</a></p>
+		<form:form method="POST" commandName="empleado"
+			action="${pageContext.request.contextPath}/empleado/add.html">
+
+			<div class="det-cuadro-gris-a">Agregar empleado</div>
+
+			<div id="dis-contenido" style="width: 100%">
+				<div class="det-contenido-1a">
+
+					<table>
+						<tbody>
+							<tr>
+								<td>Identificacion:</td>
+								<td><form:input path="identificacion" /></td>
+							</tr>
+							<tr>
+								<td>Nombre:</td>
+								<td><form:input path="nombre" /></td>
+							</tr>
+							<tr>
+								<td>Apellido:</td>
+								<td><form:input path="apellido" /></td>
+							</tr>
+							<tr>
+								<td><input type="submit" value="Guardar" /></td>
+								<td></td>
+							</tr>
+						</tbody>
+					</table>
+
+				</div>
+			</div>
+		</form:form>
+		
+	</div>
 </body>
 </html>

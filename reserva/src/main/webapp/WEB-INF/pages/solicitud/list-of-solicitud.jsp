@@ -11,44 +11,51 @@
 <title>Lista de solicitudes</title>
 </head>
 <body>
-<jsp:include page="../menu.jsp"/>	
+	<div class="container">
 
-	<h1>Lista de solicitudes</h1>
-	<p>Aqui puede ver la lista de empleados, editarlos, eliminarlos o
-		actualizarlos.</p>
-
-	<br />
-
-	<table border="1px" cellpadding="0" cellspacing="0">
-		<thead>
-			<tr>
-				<th width="10%">id</th>
-				<th width="15%">Ciudad Origen</th>
-				<th width="15%">Ciudad Destino</th>
-				<th width="10%">Fecha Salida</th>
-				<th width="10%">Fecha regreso</th>
-				<th width="10%">Estado</th>
-				<th width="10%">acciones</th>
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach var="solicitud" items="${solicitudes}">
-				<tr>
-					<td>${solicitud.id}</td>
-					<td>${solicitud.ciudadOrigen_Id.nombre}</td>
-					<td>${solicitud.ciudadDestino_Id.nombre}</td>
-					<td>${solicitud.fechaSalida}</td>
-					<td>${solicitud.fechaRegreso}</td>
-					<td>${solicitud.estadoSolicitud_Id.nombre}</td>
-					<td><a href="${pageContext.request.contextPath}/solicitud/edit/${solicitud.id}.html">Autorizar Jefe</a><br />
-						<a href="${pageContext.request.contextPath}/solicitud/delete/${solicitud.id}.html">Autorizar Gerencia</a><br />
-						
-					</td>
-				</tr>
-			</c:forEach>
-		</tbody>
-	</table>
+		<jsp:include page="../menu.jsp" />
 
 
+		<div class="det-cuadro-gris-a">Lista de solicitudes</div>
+
+		<br />
+		<div id="dis-contenido" style="width: 100%">
+			<div class="det-contenido-1a">
+
+				<table id="tabla" class="tablesorter">
+					<thead>
+						<tr class="tabla">
+							<th width="10%">id</th>
+							<th width="15%">Ciudad Origen</th>
+							<th width="15%">Ciudad Destino</th>
+							<th width="10%">Fecha Salida</th>
+							<th width="10%">Fecha regreso</th>
+							<th width="10%">Estado</th>
+							<th width="10%">acciones</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach var="solicitud" items="${solicitudes}">
+							<tr>
+								<td>${solicitud.id}</td>
+								<td>${solicitud.ciudadOrigen_Id.nombre}</td>
+								<td>${solicitud.ciudadDestino_Id.nombre}</td>
+								<td>${solicitud.fechaSalida}</td>
+								<td>${solicitud.fechaRegreso}</td>
+								<td>${solicitud.estadoSolicitud_Id.nombre}</td>
+								<td><a
+									href="${pageContext.request.contextPath}/solicitud/edit/${solicitud.id}.html">Autorizar
+										Jefe</a><br /> <a
+									href="${pageContext.request.contextPath}/solicitud/delete/${solicitud.id}.html">Autorizar
+										Gerencia</a><br /></td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+
+	</div>
 </body>
 </html>
