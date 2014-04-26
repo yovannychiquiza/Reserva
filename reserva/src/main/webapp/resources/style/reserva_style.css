@@ -33,7 +33,7 @@
 
 @font-face {
  font-family: "Arial Narrow";
- src: url(../fonts/ARIALN.TTF)format("truetype");
+ src: url(fonts/ARIALN.TTF)format("truetype");
  font-style: normal;
  font-weight: normal;
 }

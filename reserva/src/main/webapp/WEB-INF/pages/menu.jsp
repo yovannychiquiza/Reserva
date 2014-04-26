@@ -56,7 +56,7 @@
 
 
 
- <h1>Autorizacion de Reservas</h1>
+ <h1>Reserva Net</h1>
  
 <ul id="menu" >
   
@@ -77,6 +77,8 @@
   </li>
    
   <li ><a href="${pageContext.request.contextPath}/">Inicio</a></li>
+  
+  <li ><a href="<c:url value="${pageContext.request.contextPath}/j_spring_security_logout" />"> Salir</a></li>
 </ul>
  
  
