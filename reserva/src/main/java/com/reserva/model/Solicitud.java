@@ -36,7 +36,20 @@ public class Solicitud {
 	@JoinColumn(name = "EstadoSolicitud_Id")
 	private EstadoSolicitud estadoSolicitud_Id;
 		
-	  
+
+	@ManyToOne()
+	@JoinColumn(name = "empleado_Id")
+	private Empleado empleado;
+
+	
+	public Empleado getEmpleado() {
+		return empleado;
+	}
+
+	public void setEmpleado(Empleado empleado) {
+		this.empleado = empleado;
+	}
+
 	public EstadoSolicitud getEstadoSolicitud_Id() {
 		return estadoSolicitud_Id;
 	}

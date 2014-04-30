@@ -1,23 +1,22 @@
 package com.reserva.controller;
 
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.SimpleFormController;
 
 import com.reserva.model.Ciudad;
+import com.reserva.model.Empleado;
 import com.reserva.model.Solicitud;
+import com.reserva.security.UserDetailsImpl;
 import com.reserva.service.SolicitudService;
 
 @Controller
@@ -52,7 +51,12 @@ public class SolicitudController {
 	@RequestMapping(value="/add", method=RequestMethod.POST)
 	public ModelAndView addingSolicitud(@ModelAttribute Solicitud solicitud) {
 		
-		ModelAndView modelAndView = new ModelAndView("solicitud/list-of-solicitud");
+		UserDetailsImpl principal = (UserDetailsImpl)SecurityContextHolder.getContext().getAuthentication().getPrincipal();		
+		Empleado empleado = new Empleado();
+		empleado.setUsuario(principal.getUsername());
+		solicitud.setEmpleado(empleado);
+		
+		ModelAndView modelAndView = new ModelAndView("redirect:/solicitud/list");
 		solicitudService.addSolicitud(solicitud);
 		
 		String message = "El Solicitud fue satisfactoriamente creado.";
@@ -67,7 +71,6 @@ public class SolicitudController {
 		
 		List<Solicitud> solicituds = solicitudService.getSolicituds();
 		modelAndView.addObject("solicitudes", solicituds);
-		
 		return modelAndView;
 	}
 	
@@ -83,7 +86,7 @@ public class SolicitudController {
 	@RequestMapping(value="/edit/{id}", method=RequestMethod.POST)
 	public ModelAndView edditingSolicitud(@ModelAttribute Solicitud solicitud, @PathVariable Integer id) {
 		
-		ModelAndView modelAndView = new ModelAndView("solicitud/list-of-solicitud");
+		ModelAndView modelAndView = new ModelAndView("redirect:/solicitud/list");
 		
 		solicitudService.updateSolicitud(solicitud);
 		
@@ -95,7 +98,7 @@ public class SolicitudController {
 	
 	@RequestMapping(value="/delete/{id}", method=RequestMethod.GET)
 	public ModelAndView deleteSolicitud(@PathVariable Integer id) {
-		ModelAndView modelAndView = new ModelAndView("homesolicitud");
+		ModelAndView modelAndView = new ModelAndView("redirect:/solicitud/list");
 		solicitudService.deleteSolicitud(id);
 		String message = "El Solicitud fue satisfactoriamente borrado.";
 		modelAndView.addObject("message", message);

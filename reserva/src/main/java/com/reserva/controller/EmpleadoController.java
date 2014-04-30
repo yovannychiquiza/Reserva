@@ -30,7 +30,7 @@ public class EmpleadoController {
 	@RequestMapping(value="/add", method=RequestMethod.POST)
 	public ModelAndView addingEmpleado(@ModelAttribute Empleado empleado) {
 		
-		ModelAndView modelAndView = new ModelAndView("empleado/list-of-empleados");
+		ModelAndView modelAndView = new ModelAndView("redirect:/empleado/list");
 		empleadoService.addEmpleado(empleado);
 		
 		String message = "El Empleado fue satisfactoriamente creado.";
@@ -60,7 +60,7 @@ public class EmpleadoController {
 	@RequestMapping(value="/edit/{id}", method=RequestMethod.POST)
 	public ModelAndView edditingEmpleado(@ModelAttribute Empleado empleado, @PathVariable Integer id) {
 		
-		ModelAndView modelAndView = new ModelAndView("empleado/list-of-empleados");
+		ModelAndView modelAndView = new ModelAndView("redirect:/empleado/list");
 		
 		empleadoService.updateEmpleado(empleado);
 		
@@ -72,7 +72,7 @@ public class EmpleadoController {
 	
 	@RequestMapping(value="/delete/{id}", method=RequestMethod.GET)
 	public ModelAndView deleteEmpleado(@PathVariable Integer id) {
-		ModelAndView modelAndView = new ModelAndView("empleado/home");
+		ModelAndView modelAndView = new ModelAndView("redirect:/empleado/list");
 		empleadoService.deleteEmpleado(id);
 		String message = "El Empleado fue satisfactoriamente borrado.";
 		modelAndView.addObject("message", message);

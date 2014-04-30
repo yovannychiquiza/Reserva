@@ -9,8 +9,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.reserva.dao.CiudadDAO;
+import com.reserva.dao.EmpleadoDAO;
 import com.reserva.dao.SolicitudDAO;
 import com.reserva.model.Ciudad;
+import com.reserva.model.Empleado;
 import com.reserva.model.EstadoSolicitud;
 import com.reserva.model.Solicitud;
 import com.reserva.service.Constantes.EnumEstadoSolictud;
@@ -25,6 +27,9 @@ public class SolicitudServiceImpl implements SolicitudService {
 	@Autowired
 	private CiudadDAO ciudadDAO;
 
+	@Autowired
+	private EmpleadoDAO empleadoDAO;
+
 	public void addSolicitud(Solicitud solicitud) {
 		Calendar cal = Calendar.getInstance();
 		solicitud.setFechaModificacion(cal.getTime());
@@ -32,6 +37,10 @@ public class SolicitudServiceImpl implements SolicitudService {
 		EstadoSolicitud estadoSolicitud = new EstadoSolicitud();
 		estadoSolicitud.setId(EnumEstadoSolictud.Autorizacion_Seguridad.getValor());
 		solicitud.setEstadoSolicitud_Id(estadoSolicitud);
+		
+		Empleado empleado = empleadoDAO.getEmpleado(solicitud.getEmpleado().getUsuario());
+		solicitud.setEmpleado(empleado);
+		
 		solicitudDAO.addSolicitud(solicitud);		
 	}
 

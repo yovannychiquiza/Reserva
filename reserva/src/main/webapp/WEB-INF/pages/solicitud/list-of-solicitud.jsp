@@ -30,6 +30,7 @@
 							<th width="15%">Ciudad Destino</th>
 							<th width="10%">Fecha Salida</th>
 							<th width="10%">Fecha regreso</th>
+							<th width="10%">Empleado</th>
 							<th width="10%">Estado</th>
 							<th width="10%">acciones</th>
 						</tr>
@@ -42,6 +43,7 @@
 								<td>${solicitud.ciudadDestino_Id.nombre}</td>
 								<td>${solicitud.fechaSalida}</td>
 								<td>${solicitud.fechaRegreso}</td>
+								<td>${solicitud.empleado.nombre} ${solicitud.empleado.apellido}</td>								
 								<td>${solicitud.estadoSolicitud_Id.nombre}</td>
 								<td><a
 									href="${pageContext.request.contextPath}/solicitud/edit/${solicitud.id}.html">Autorizar

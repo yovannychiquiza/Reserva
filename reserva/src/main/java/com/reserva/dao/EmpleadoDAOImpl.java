@@ -2,6 +2,7 @@ package com.reserva.dao;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,14 @@ public class EmpleadoDAOImpl implements EmpleadoDAO {
 
 	public Empleado getEmpleado(int id) {
 		Empleado empleado = (Empleado) getCurrentSession().get(Empleado.class, id);
+		return empleado;
+	}
+
+	public Empleado getEmpleado(String usuario) {		
+		String hql = "from Empleado e where e.usuario = :usuario";
+		Query query = getCurrentSession().createQuery(hql);
+		query.setParameter("usuario",usuario);
+		Empleado empleado = (Empleado)query.uniqueResult();
 		return empleado;
 	}
 
