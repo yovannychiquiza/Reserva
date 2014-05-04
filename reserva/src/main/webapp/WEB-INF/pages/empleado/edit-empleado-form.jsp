@@ -40,6 +40,15 @@
 								<td><form:input path="apellido" /></td>
 							</tr>
 							<tr>
+								<td>Usuario:</td>
+								<td><form:input path="usuario" /></td>
+							</tr>
+							<tr>
+								<td>Contraseña:</td>
+								<td><form:password path="contrasena" /></td>
+							</tr>
+							
+							<tr>
 								<td><input type="submit" value="Guardar" /></td>
 								<td></td>
 							</tr>

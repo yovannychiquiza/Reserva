@@ -28,6 +28,8 @@ public class EmpleadoDAOImpl implements EmpleadoDAO {
 		Empleado empleadoToUpdate = getEmpleado(empleado.getId());
 		empleadoToUpdate.setNombre(empleado.getNombre());
 		empleadoToUpdate.setApellido(empleado.getApellido());
+		empleadoToUpdate.setUsuario(empleado.getUsuario());
+		empleadoToUpdate.setContrasena(empleado.getContrasena());		
 		getCurrentSession().update(empleadoToUpdate);
 		
 	}
