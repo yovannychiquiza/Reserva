@@ -1,5 +1,5 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -57,6 +57,7 @@
 
 
  <h1>Reserva Net</h1>
+ <h4><security:authentication property="principal.username" /></h4>
  
 <ul id="menu" >
   
@@ -71,7 +72,9 @@
   <li>
     <a href="#">Solicitud</a>
     <ul>      
+      <security:authorize access="hasRole('ADMIN')">
       <li><a href="${pageContext.request.contextPath}/solicitud/add.html">Crear</a></li>
+      </security:authorize>
       <li><a href="${pageContext.request.contextPath}/solicitud/list.html">Lista</a></li>
     </ul>
   </li>
