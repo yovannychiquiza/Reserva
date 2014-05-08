@@ -12,11 +12,13 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.reserva.dao.EmpleadoDAO;
 import com.reserva.model.Empleado;
 
 @Service("UserDetailServiceImpl")
+@Transactional(readOnly=true) 
 public class UserDetailsServiceImpl implements UserDetailsService{
 	
 	// just to emulate user data and credentials retrieval from a DB, or whatsoever authentication service
