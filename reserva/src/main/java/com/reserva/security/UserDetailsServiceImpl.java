@@ -15,7 +15,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.reserva.dao.EmpleadoDAO;
+import com.reserva.dao.SeguridadDAO;
 import com.reserva.model.Empleado;
+import com.reserva.model.EmpleadoPermiso;
 
 @Service("UserDetailServiceImpl")
 @Transactional(readOnly=true) 
@@ -27,24 +29,27 @@ public class UserDetailsServiceImpl implements UserDetailsService{
 	@Autowired
 	private EmpleadoDAO empleadoDAO;
 	
-	static{
+	@Autowired
+	private SeguridadDAO seguridadDAO;
+	
+	/*static{
 		GrantedAuthority authorityAdmin = new GrantedAuthorityImpl("ADMIN");
 		GrantedAuthority authorityGuest = new GrantedAuthorityImpl("GUEST");
 		GrantedAuthority authorityAdministrador = new GrantedAuthorityImpl("ADMINISTRADOR");
 		
-		/* user1/password1 --> ADMIN */
+		 user1/password1 --> ADMIN 
 		Set<GrantedAuthority> authorities1 = new HashSet<GrantedAuthority>();
 		authorities1.add(authorityAdmin);
 		UserDetails user1 = new UserDetailsImpl("user1", "user1", authorities1);
 		userRepository.put("user1", user1);
 		
-		/* user2/password2 --> GUEST */
+		 user2/password2 --> GUEST 
 		Set<GrantedAuthority> authorities2 = new HashSet<GrantedAuthority>();
 		authorities2.add(authorityGuest);
 		UserDetails user2 = new UserDetailsImpl("user2", "user2", authorities2);
 		userRepository.put("user2", user2);
 		
-		/* user3/password3 --> ADMIN + GUEST */
+		 user3/password3 --> ADMIN + GUEST 
 		Set<GrantedAuthority> authorities3 = new HashSet<GrantedAuthority>();
 		authorities3.add(authorityAdmin);
 		authorities3.add(authorityGuest);
@@ -52,18 +57,27 @@ public class UserDetailsServiceImpl implements UserDetailsService{
 		UserDetails user3 = new UserDetailsImpl("user3", "user3", authorities3);
 		userRepository.put("user3", user3);			
 		
-	}
+	}*/
 	
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-		GrantedAuthority authorityAdmin = new GrantedAuthorityImpl("ADMIN");
+		GrantedAuthority authorityAdmin = new GrantedAuthorityImpl("INGRESO");
 
 		Set<GrantedAuthority> authorities3 = new HashSet<GrantedAuthority>();
 		authorities3.add(authorityAdmin);
 
 		List<Empleado> lista =  empleadoDAO.getEmpleados();
 		for (Empleado empleado : lista) {
-			UserDetails user = new UserDetailsImpl(empleado.getUsuario(), empleado.getContrasena(), authorities3);			
+			
+			List<EmpleadoPermiso> listaPermiso = seguridadDAO.getEmpleadoPermiso(empleado.getId());
+			for (EmpleadoPermiso empleadoPermiso : listaPermiso) {
+				if(empleadoPermiso.getEmpleado_Id().getId() == empleado.getId() && empleado.getUsuario().equals(username) ){
+					GrantedAuthority authority = new GrantedAuthorityImpl(empleadoPermiso.getPermiso_Id().getNombre());
+					authorities3.add(authority);				
+				}
+			} 			
+			
+			UserDetails user = new UserDetailsImpl(empleado.getUsuario(), empleado.getContrasena(), authorities3);				
 			userRepository.put(empleado.getUsuario(), user);			
 		}
 		

@@ -63,8 +63,10 @@
   
   <li>
     <a href="#">Empleado</a>
-    <ul>      
+    <ul>
+      <security:authorize access="hasRole('ADMIN')">         
       <li><a href="${pageContext.request.contextPath}/empleado/add.html">Crear</a></li>
+      </security:authorize>
       <li><a href="${pageContext.request.contextPath}/empleado/list.html">Lista</a></li>
     </ul>
   </li>
@@ -72,9 +74,7 @@
   <li>
     <a href="#">Solicitud</a>
     <ul>      
-      <security:authorize access="hasRole('ADMIN')">
-      <li><a href="${pageContext.request.contextPath}/solicitud/add.html">Crear</a></li>
-      </security:authorize>
+      <li><a href="${pageContext.request.contextPath}/solicitud/add.html">Crear</a></li>      
       <li><a href="${pageContext.request.contextPath}/solicitud/list.html">Lista</a></li>
     </ul>
   </li>
