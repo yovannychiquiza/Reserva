@@ -35,7 +35,7 @@ public class SolicitudServiceImpl implements SolicitudService {
 		solicitud.setFechaModificacion(cal.getTime());
 		
 		EstadoSolicitud estadoSolicitud = new EstadoSolicitud();
-		estadoSolicitud.setId(EnumEstadoSolictud.Autorizacion_Seguridad.getValor());
+		estadoSolicitud.setId(EnumEstadoSolictud.Pendiente.getValor());
 		solicitud.setEstadoSolicitud_Id(estadoSolicitud);
 		
 		Empleado empleado = empleadoDAO.getEmpleado(solicitud.getEmpleado().getUsuario());

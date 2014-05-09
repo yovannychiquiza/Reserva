@@ -3,11 +3,12 @@ package com.reserva.service;
 public class Constantes {
 	
 	public enum EnumEstadoSolictud {
-		Autorizacion_Seguridad(1),
-		Autorizacion_Jefe(2),
-		Autorizacion_Gerencia(3),
-		Aprobado(4),
-		Rechazado(5);
+		Pendiente(1),
+		Autorizacion_Seguridad(2),
+		Autorizacion_Jefe(3),
+		Autorizacion_Gerencia(4),
+		Aprobado(5),
+		Rechazado(6);
 		int precio;
 		EnumEstadoSolictud(int  p){
 			precio = p;

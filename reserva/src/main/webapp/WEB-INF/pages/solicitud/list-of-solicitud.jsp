@@ -1,4 +1,5 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 
@@ -45,11 +46,18 @@
 								<td>${solicitud.fechaRegreso}</td>
 								<td>${solicitud.empleado.nombre} ${solicitud.empleado.apellido}</td>								
 								<td>${solicitud.estadoSolicitud_Id.nombre}</td>
-								<td><a
-									href="${pageContext.request.contextPath}/solicitud/edit/${solicitud.id}.html">Autorizar
-										Jefe</a><br /> <a
-									href="${pageContext.request.contextPath}/solicitud/delete/${solicitud.id}.html">Autorizar
-										Gerencia</a><br /></td>
+								<td>
+								    <security:authorize access="hasRole('AutorizacionSeguridad')">         								
+										<a href="${pageContext.request.contextPath}/solicitud/edit/${solicitud.id}.html">Autorizar Seguridad</a><br />
+									</security:authorize>
+									<security:authorize access="hasRole('AutorizacionJefe')">
+										<a href="${pageContext.request.contextPath}/solicitud/edit/${solicitud.id}.html">Autorizar Jefe</a><br />
+									</security:authorize>
+									<security:authorize access="hasRole('AutorizacionGerencia')">
+										<a href="${pageContext.request.contextPath}/solicitud/edit/${solicitud.id}.html">Autorizar Gerencia</a><br />
+									</security:authorize>
+									
+								</td>
 							</tr>
 						</c:forEach>
 					</tbody>
