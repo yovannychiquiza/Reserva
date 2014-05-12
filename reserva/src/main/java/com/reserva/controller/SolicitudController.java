@@ -17,6 +17,7 @@ import com.reserva.model.Ciudad;
 import com.reserva.model.Empleado;
 import com.reserva.model.Solicitud;
 import com.reserva.security.UserDetailsImpl;
+import com.reserva.service.Constantes.EnumEstadoSolictud;
 import com.reserva.service.SolicitudService;
 
 @Controller
@@ -74,25 +75,40 @@ public class SolicitudController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/edit/{id}", method=RequestMethod.GET)
+	@RequestMapping(value="/seguridad/{id}", method=RequestMethod.GET)
 	public ModelAndView editSolicitudPage(@PathVariable Integer id) {
 		ModelAndView modelAndView = new ModelAndView("solicitud/edit-solicitud-form");
 		Solicitud solicitud = solicitudService.getSolicitud(id);
+		solicitud.setTipoEstado(EnumEstadoSolictud.Autorizacion_Seguridad.getValor());
 		modelAndView.addObject("listaCiudades", referenceData());
 		modelAndView.addObject("solicitud",solicitud);
 		return modelAndView;
 	}
-	
+
+	@RequestMapping(value="/jefe/{id}", method=RequestMethod.GET)
+	public ModelAndView editSolicitudPage1(@PathVariable Integer id) {
+		ModelAndView modelAndView = new ModelAndView("solicitud/edit-solicitud-form");
+		Solicitud solicitud = solicitudService.getSolicitud(id);
+		solicitud.setTipoEstado(EnumEstadoSolictud.Autorizacion_Jefe.getValor());
+		modelAndView.addObject("listaCiudades", referenceData());
+		modelAndView.addObject("solicitud",solicitud);
+		return modelAndView;
+	}
+
+	@RequestMapping(value="/gerencia/{id}", method=RequestMethod.GET)
+	public ModelAndView editSolicitudPage2(@PathVariable Integer id) {
+		ModelAndView modelAndView = new ModelAndView("solicitud/edit-solicitud-form");
+		Solicitud solicitud = solicitudService.getSolicitud(id);
+		solicitud.setTipoEstado(EnumEstadoSolictud.Autorizacion_Gerencia.getValor());
+		modelAndView.addObject("listaCiudades", referenceData());
+		modelAndView.addObject("solicitud",solicitud);
+		return modelAndView;
+	}
+
 	@RequestMapping(value="/edit/{id}", method=RequestMethod.POST)
-	public ModelAndView edditingSolicitud(@ModelAttribute Solicitud solicitud, @PathVariable Integer id) {
-		
-		ModelAndView modelAndView = new ModelAndView("redirect:/solicitud/list");
-		
-		solicitudService.updateSolicitud(solicitud);
-		
-		String message = "El Solicitud fue satisfactoriamente editado.";
-		modelAndView.addObject("message", message);
-		
+	public ModelAndView edditingSolicitudseguridad(@ModelAttribute Solicitud solicitud, @PathVariable Integer id) {		
+		ModelAndView modelAndView = new ModelAndView("redirect:/solicitud/list");			
+		solicitudService.autorizacion(solicitud);		
 		return modelAndView;
 	}
 	

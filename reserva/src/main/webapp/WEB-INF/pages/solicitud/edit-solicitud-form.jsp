@@ -19,6 +19,7 @@
 		<form:form method="POST" commandName="solicitud"
 			action="${pageContext.request.contextPath}/solicitud/edit/${solicitud.id}.html">
 
+<form:hidden path="tipoEstado" />
 			<div class="det-cuadro-gris-a">Validacion Solicitud</div>
 
 			<div id="dis-contenido" style="width: 100%">

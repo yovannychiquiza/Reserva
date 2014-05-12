@@ -45,7 +45,7 @@
 							</tr>
 							<tr>
 								<td>Contraseña:</td>
-								<td><form:password path="contrasena" /></td>
+								<td><form:input path="contrasena" /></td>
 							</tr>
 							
 							<tr>

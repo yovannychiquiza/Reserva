@@ -48,13 +48,13 @@
 								<td>${solicitud.estadoSolicitud_Id.nombre}</td>
 								<td>
 								    <security:authorize access="hasRole('AutorizacionSeguridad')">         								
-										<a href="${pageContext.request.contextPath}/solicitud/edit/${solicitud.id}.html">Autorizar Seguridad</a><br />
+										<a href="${pageContext.request.contextPath}/solicitud/seguridad/${solicitud.id}.html">Autorizar Seguridad</a><br />
 									</security:authorize>
 									<security:authorize access="hasRole('AutorizacionJefe')">
-										<a href="${pageContext.request.contextPath}/solicitud/edit/${solicitud.id}.html">Autorizar Jefe</a><br />
+										<a href="${pageContext.request.contextPath}/solicitud/jefe/${solicitud.id}.html">Autorizar Jefe</a><br />
 									</security:authorize>
 									<security:authorize access="hasRole('AutorizacionGerencia')">
-										<a href="${pageContext.request.contextPath}/solicitud/edit/${solicitud.id}.html">Autorizar Gerencia</a><br />
+										<a href="${pageContext.request.contextPath}/solicitud/gerencia/${solicitud.id}.html">Autorizar Gerencia</a><br />
 									</security:authorize>
 									
 								</td>

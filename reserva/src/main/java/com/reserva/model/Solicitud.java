@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="solicitud")
@@ -41,7 +42,17 @@ public class Solicitud {
 	@JoinColumn(name = "empleado_Id")
 	private Empleado empleado;
 
+	@Transient
+	private int TipoEstado;
 	
+	public int getTipoEstado() {
+		return TipoEstado;
+	}
+
+	public void setTipoEstado(int tipoEstado) {
+		TipoEstado = tipoEstado;
+	}
+
 	public Empleado getEmpleado() {
 		return empleado;
 	}

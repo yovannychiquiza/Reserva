@@ -61,28 +61,28 @@ public class UserDetailsServiceImpl implements UserDetailsService{
 	
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-		GrantedAuthority authorityAdmin = new GrantedAuthorityImpl("INGRESO");
+		GrantedAuthority authorityIngreso = new GrantedAuthorityImpl("INGRESO");
 
-		Set<GrantedAuthority> authorities3 = new HashSet<GrantedAuthority>();
-		authorities3.add(authorityAdmin);
+		Set<GrantedAuthority> listaPermisos = new HashSet<GrantedAuthority>();//lista de permisos
+		listaPermisos.add(authorityIngreso);
 
-		List<Empleado> lista =  empleadoDAO.getEmpleados();
+		List<Empleado> lista =  empleadoDAO.getEmpleados();//consulta todos los empleados
 		for (Empleado empleado : lista) {
 			
-			List<EmpleadoPermiso> listaPermiso = seguridadDAO.getEmpleadoPermiso(empleado.getId());
+			List<EmpleadoPermiso> listaPermiso = seguridadDAO.getEmpleadoPermiso(empleado.getId());//consulta los permisos
 			for (EmpleadoPermiso empleadoPermiso : listaPermiso) {
-				if(empleadoPermiso.getEmpleado_Id().getId() == empleado.getId() && empleado.getUsuario().equals(username) ){
-					GrantedAuthority authority = new GrantedAuthorityImpl(empleadoPermiso.getPermiso_Id().getNombre());
-					authorities3.add(authority);				
+				if(empleadoPermiso.getEmpleado_Id().getId() == empleado.getId() && empleado.getUsuario().equals(username) ){//valida que exista el empleado
+					GrantedAuthority permisoConfigurado = new GrantedAuthorityImpl(empleadoPermiso.getPermiso_Id().getNombre());
+					listaPermisos.add(permisoConfigurado);				
 				}
 			} 			
 			
-			UserDetails user = new UserDetailsImpl(empleado.getUsuario(), empleado.getContrasena(), authorities3);				
-			userRepository.put(empleado.getUsuario(), user);			
+			UserDetails user = new UserDetailsImpl(empleado.getUsuario(), empleado.getContrasena(), listaPermisos);				
+			userRepository.put(empleado.getUsuario(), user);//adicion de permisos			
 		}
 		
 		
-		UserDetails matchingUser = userRepository.get(username);
+		UserDetails matchingUser = userRepository.get(username);//se consulta el usuario
 		
 		if(matchingUser == null){
 			throw new UsernameNotFoundException("Wrong username or password");
