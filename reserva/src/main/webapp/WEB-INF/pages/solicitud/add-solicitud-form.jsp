@@ -19,6 +19,26 @@
 			$(function() {
 				$(".datepicker").datepicker();
 			});
+						 
+			 $(document).ready(function() {
+
+				 $('#Guardar').click(function(event){
+					 
+					 var fechaSalida = $("#fechaSalida").val();
+					 var fechaRegreso = $("#fechaRegreso").val();
+					 var hoy = new Date()
+					 
+					 if(Date.parse(fechaSalida) < hoy || Date.parse(fechaRegreso) < hoy){
+						 alert("la Fecha debe ser mayor que hoy");
+						 event.preventDefault();
+					 }
+					 
+					 if(Date.parse(fechaSalida) > Date.parse(fechaRegreso)){
+					    alert("Rango de fecha invalida");
+					    event.preventDefault();
+					 }							 				 
+				});
+			 });
 		</script>
 
 
@@ -61,7 +81,7 @@
 							</tr>
 							<tr>
 								<td align="right" class="key"></td>
-								<td><input type="submit" value="Guardar" /></td>
+								<td><input type="submit" id="Guardar" value="Guardar" /></td>
 							</tr>
 						</tbody>
 					</table>
