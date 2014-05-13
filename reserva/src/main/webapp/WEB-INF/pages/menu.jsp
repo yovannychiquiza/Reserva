@@ -81,9 +81,11 @@
 
   <li>
     <a href="#">Ciudades</a>
-    <ul>      
-      <li><a href="${pageContext.request.contextPath}/Ciudades/add.html">Crear</a></li>      
-      <li><a href="${pageContext.request.contextPath}/Ciudades/list.html">Lista</a></li>
+    <ul>   
+      <security:authorize access="hasRole('ADMIN')">     
+      	<li><a href="${pageContext.request.contextPath}/ciudad/add.html">Crear</a></li>  
+      </security:authorize>    
+      <li><a href="${pageContext.request.contextPath}/ciudad/list.html">Lista</a></li>
     </ul>
   </li>
    
