@@ -55,10 +55,13 @@
   </style>
 
 
-
+<div style = "float: left;">
+	<img src="<c:url value="/resources/images/logo.jpg" />" >
+</div>
  <h1>Reserva Net</h1>
- <h4><security:authentication property="principal.username" /></h4>
- 
+ <div style = "float: right; padding-right: 100px">
+ 	<h1><security:authentication property="principal.username" /></h1>
+ </div>
 <ul id="menu" >
   
   <li>
