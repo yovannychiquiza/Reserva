@@ -78,6 +78,14 @@
       <li><a href="${pageContext.request.contextPath}/solicitud/list.html">Lista</a></li>
     </ul>
   </li>
+
+  <li>
+    <a href="#">Ciudades</a>
+    <ul>      
+      <li><a href="${pageContext.request.contextPath}/Ciudades/add.html">Crear</a></li>      
+      <li><a href="${pageContext.request.contextPath}/Ciudades/list.html">Lista</a></li>
+    </ul>
+  </li>
    
   <li ><a href="${pageContext.request.contextPath}/">Inicio</a></li>
   
