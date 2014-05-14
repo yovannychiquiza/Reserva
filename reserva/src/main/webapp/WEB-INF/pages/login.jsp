@@ -7,14 +7,16 @@
 <html>
 
 <head>
-	<link href="<c:url value='/resources/style/reserva_style.css' />" rel="stylesheet">
+	<link href="<c:url value='/resources/style/reserva_style.css' />" rel="stylesheet">		
 </head>
 <body>
 <div class="container">
 
 	<div id="loginPannel">
 		<security:authorize access="!isAuthenticated()">
-
+		<div style = "float: left;">
+			<img src="<c:url value="/resources/images/logo.jpg" />" >
+		</div>
 			<div class="det-cuadro-gris-a">Bienvenidos a Reserva Net</div>
 
 			<div id="dis-contenido" style="width: 100%">
