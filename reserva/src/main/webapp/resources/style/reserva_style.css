@@ -30,7 +30,18 @@
    Detalle Vuelos
    Reserva
 */
-
+.banner_top {
+    background: #33363F;
+    border-bottom: 1px solid #B2B2B5;
+    color: #FFFFFF;
+    height: 46px;
+    left: 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 2147483647;
+    font-family: Century Gothic;
+}
 @font-face {
  font-family: "Arial Narrow";
  src: url(fonts/ARIALN.TTF)format("truetype");

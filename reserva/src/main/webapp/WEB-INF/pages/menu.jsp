@@ -97,7 +97,7 @@
   <li ><a href="<c:url value="${pageContext.request.contextPath}/j_spring_security_logout" />"> Salir</a></li>
 </ul>
  
- 
+ <jsp:include page="footer.jsp" />
 
 
 
