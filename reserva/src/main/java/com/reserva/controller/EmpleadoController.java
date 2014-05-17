@@ -2,12 +2,16 @@ package com.reserva.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.reserva.model.Empleado;
@@ -87,10 +91,17 @@ public class EmpleadoController {
 		modelAndView.addObject("empleado", empleado);
 		return modelAndView;
 	}
-
-	@RequestMapping(value="/guardaPermiso/{id}", method=RequestMethod.GET)
-	public ModelAndView permisoEmpleadoPage1(@PathVariable Integer id) {
-		return null;
+	
+	@RequestMapping(value = "/guardaPermiso", method = RequestMethod.GET)
+	public void permisoEmpleadoPage1(@RequestParam(value = "empleado_id", required = true) int empleado_id,
+			@RequestParam(value = "permiso_id", required = true) int permiso_id, 
+			@RequestParam(value = "activo", required = true) boolean activo, 
+			HttpServletRequest request, 
+			HttpServletResponse response) throws Exception {
+		
+		empleadoService.guardarPermiso(empleado_id, permiso_id, activo);
+		
 	}
+
 
 }

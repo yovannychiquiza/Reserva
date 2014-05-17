@@ -15,6 +15,17 @@
 	<div class="container">
 
 		<jsp:include page="../menu.jsp" />
+		<script>			
+						 
+			 $(document).ready(function() {
+				 $('input[type=checkbox]').click(function() {					 					    						
+					 var permiso_id = $(this).attr('permiso_id')
+					 var empleado_id = $(this).attr('empleado_id')					 
+					 var activo = this.checked 					
+					 $.get( "${pageContext.request.contextPath}/empleado/guardaPermiso.html", {empleado_id : empleado_id, permiso_id: permiso_id, activo: activo  } );
+				});
+			 });
+		</script>
 		
 		<p>${message}</p>
 		<form:form method="POST" commandName="empleado"
@@ -48,18 +59,18 @@
 									        <th></th>
 									        <th>Permiso</th>
 									    </tr>
-									    <c:forEach items="${empleado.empleadoPermisoAll}" var="permiso" varStatus="status">
+									    <c:forEach items="${empleado.permiso}" var="permiso" varStatus="status">
 									        <tr>
 									            <input type="hidden" name="permiso[${status.index}].id" value="${permiso.id}"/>
 									        
 									            <c:if test="${permiso.activo == true}">
-									            	<td><input type="checkbox" valor="${permiso.id}" id="permiso[${status.index}].activo"  name="permiso[${status.index}].activo" checked ></td>
+									            	<td><input type="checkbox" empleado_id="${empleado.id}" permiso_id="${permiso.id}" id="permiso[${status.index}].activo"  name="permiso[${status.index}].activo" checked ></td>
 				 					            </c:if>
 									            <c:if test="${permiso.activo == false}">
-									            	<td><input type="checkbox" valor="${permiso.id}" id="permiso[${status.index}].activo" name="permiso[${status.index}].activo" ></td>
+									            	<td><input type="checkbox" empleado_id="${empleado.id}" permiso_id="${permiso.id}" id="permiso[${status.index}].activo" name="permiso[${status.index}].activo" ></td>
 				 					            </c:if>
 				 					           
-									            <td>${permiso.nombrePermiso}</td>
+									            <td>${permiso.nombre}</td>
 									        </tr>
 									    </c:forEach>
 									</table>  

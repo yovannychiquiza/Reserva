@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="permiso")
@@ -14,6 +15,18 @@ public class Permiso {
 	private Integer id;
 
 	private String nombre;
+
+	
+	@Transient
+	private boolean activo;	
+
+	public boolean isActivo() {
+		return activo;
+	}
+
+	public void setActivo(boolean activo) {
+		this.activo = activo;
+	}
 
 	public Integer getId() {
 		return id;

@@ -13,4 +13,6 @@ public interface EmpleadoService {
 	public void deleteEmpleado(int id);
 	public List<Empleado> getEmpleados();
 	public Empleado getEmpleadoPermiso(int id);
+	public void guardarPermiso(int empleado, int permiso_id, boolean activo);
+	
 }

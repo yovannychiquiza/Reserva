@@ -38,15 +38,15 @@ public class Empleado {
     private Set<EmpleadoPermiso> empleadoPermiso;	
 
 	@Transient
-    private List<EmpleadoPermiso> empleadoPermisoAll;	
+    private List<Permiso> permiso;	
 
     
-	public List<EmpleadoPermiso> getEmpleadoPermisoAll() {
-		return empleadoPermisoAll;
+	public List<Permiso> getPermiso() {
+		return permiso;
 	}
 
-	public void setEmpleadoPermisoAll(List<EmpleadoPermiso> empleadoPermisoAll) {
-		this.empleadoPermisoAll = empleadoPermisoAll;
+	public void setPermiso(List<Permiso> permiso) {
+		this.permiso = permiso;
 	}
 
 	public Set<EmpleadoPermiso> getEmpleadoPermiso() {
