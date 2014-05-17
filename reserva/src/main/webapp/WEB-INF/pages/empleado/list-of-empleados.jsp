@@ -41,7 +41,7 @@
 								<td><a
 									href="${pageContext.request.contextPath}/empleado/edit/${empleado.id}.html">Editar</a><br />
 									<a
-									href="${pageContext.request.contextPath}/empleado/delete/${empleado.id}.html">borrar</a><br />
+									href="${pageContext.request.contextPath}/empleado/permiso/${empleado.id}.html">permiso</a><br />
 								</td>
 							</tr>
 						</c:forEach>

@@ -31,4 +31,8 @@ public class SeguridadDAOImpl implements SeguridadDAO {
 		return lista;*/
 	}
 
+	public List<EmpleadoPermiso> getEmpleadoPermisoAll() {		
+		return getCurrentSession().createQuery("from EmpleadoPermiso").list();		
+	}
+
 }

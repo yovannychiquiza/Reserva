@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.reserva.model.Empleado;
+import com.reserva.model.EmpleadoPermiso;
 import com.reserva.service.EmpleadoService;
 
 @Controller
@@ -77,6 +78,19 @@ public class EmpleadoController {
 		String message = "El Empleado fue satisfactoriamente borrado.";
 		modelAndView.addObject("message", message);
 		return modelAndView;
+	}
+	
+	@RequestMapping(value="/permiso/{id}", method=RequestMethod.GET)
+	public ModelAndView permisoEmpleadoPage(@PathVariable Integer id) {
+		ModelAndView modelAndView = new ModelAndView("empleado/permiso-empleado-form");
+		Empleado empleado = empleadoService.getEmpleadoPermiso(id);
+		modelAndView.addObject("empleado", empleado);
+		return modelAndView;
+	}
+
+	@RequestMapping(value="/guardaPermiso/{id}", method=RequestMethod.GET)
+	public ModelAndView permisoEmpleadoPage1(@PathVariable Integer id) {
+		return null;
 	}
 
 }

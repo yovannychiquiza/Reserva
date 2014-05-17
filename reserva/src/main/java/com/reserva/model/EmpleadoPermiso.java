@@ -6,6 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="empleadopermiso")
@@ -22,6 +23,29 @@ public class EmpleadoPermiso {
 	@ManyToOne()
 	@JoinColumn(name = "Permiso_Id")
 	private Permiso Permiso_Id;
+	
+	@Transient
+	private boolean activo;
+
+	@Transient
+	private String nombrePermiso;
+
+	
+	public String getNombrePermiso() {
+		return nombrePermiso;
+	}
+
+	public void setNombrePermiso(String nombrePermiso) {
+		this.nombrePermiso = nombrePermiso;
+	}
+
+	public boolean isActivo() {
+		return activo;
+	}
+
+	public void setActivo(boolean activo) {
+		this.activo = activo;
+	}
 
 	public Integer getId() {
 		return id;
