@@ -1,5 +1,5 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
