@@ -38,10 +38,13 @@
 								<td>${empleado.identificacion}</td>
 								<td>${empleado.nombre}</td>
 								<td>${empleado.apellido}</td>
-								<td><a
-									href="${pageContext.request.contextPath}/empleado/edit/${empleado.id}.html">Editar</a><br />
-									<a
-									href="${pageContext.request.contextPath}/empleado/permiso/${empleado.id}.html">permiso</a><br />
+								<td>
+								<security:authorize access="hasRole('ADMIN')">
+									<a href="${pageContext.request.contextPath}/empleado/edit/${empleado.id}.html">Editar</a><br />
+								</security:authorize>
+								<security:authorize access="hasRole('ADMIN')">
+									<a href="${pageContext.request.contextPath}/empleado/permiso/${empleado.id}.html">permiso</a><br />
+								</security:authorize>	
 								</td>
 							</tr>
 						</c:forEach>
